@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { ReactComponent as PasswordIcon } from 'assets/password.svg';
 import { ReactComponent as UserIcon } from 'assets/user.svg';
 import { IconContainer } from 'components/IconContainer';
+import { signIn } from 'stores/auth/effects';
 import { SubmitButton } from './SubmitButton';
 import {
   Caption,
@@ -15,22 +16,28 @@ import {
 } from './styled';
 
 export const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    signIn({ email, password, rememberMe });
+  }
 
   return (
     <PageContainer>
       <ContentContainer>
         <Logo />
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <WelcomeText>Welcome to the Learning Management System</WelcomeText>
           <Caption>Please log in to continue</Caption>
           <LoginFormInput
-            placeholder="Username"
+            placeholder="Email"
             icon={<IconContainer size={18}><UserIcon /></IconContainer>}
-            value={username}
-            setValue={setUsername}
+            value={email}
+            setValue={setEmail}
           />
           <LoginFormInput
             placeholder="Password"

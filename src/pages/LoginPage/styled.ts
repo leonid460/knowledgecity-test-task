@@ -11,7 +11,6 @@ export const PageContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: #f6f6f6;
 `;
 
 export const ContentContainer = styled.div`
