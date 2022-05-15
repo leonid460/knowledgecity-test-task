@@ -1,16 +1,31 @@
 import { $auth } from 'stores/auth/store';
 import { logout } from 'stores/auth/events';
 
+type HttpRequestQueryParams = Record<string, string>;
+
 type HttpRequestArgs = {
   method: string;
   type: 'POST' | 'PUT' | 'GET' | 'DELETE';
   body?: Object;
+  queryParams?: HttpRequestQueryParams;
+}
+
+function createURLWithQueryParams(method: string, queryParams?: HttpRequestQueryParams) {
+  const url = new URL(process.env.REACT_APP_API_URL + method);
+
+  if (queryParams) {
+    Object.entries(queryParams).forEach(([key, value]) => {
+      url.searchParams.append(key, value);
+    });
+  }
+
+  return url.toString();
 }
 
 export async function httpRequest(args: HttpRequestArgs) {
-  const { method, body, type } = args;
+  const { method, body, type, queryParams } = args;
   const { token } = $auth.getState();
-  const url = process.env.REACT_APP_API_URL + method;
+  const url = createURLWithQueryParams(method, queryParams);
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json'
