@@ -11,13 +11,19 @@ import {
 } from './styled';
 import { ListItemProps } from './types';
 
-export const ListItem: FC<ListItemProps> = ({ email, groupTitle, lastName, firstName }) => {
+export const ListItem: FC<ListItemProps> = ({
+  email,
+  groupTitle,
+  lastName,
+  firstName,
+  onTitleClick
+}) => {
   return (
     <ListItemContainer>
       <CheckMarkContainer size={23} color="#188836">
         <CheckmarkIcon />
       </CheckMarkContainer>
-      <UserEmail>{email}</UserEmail>
+      <UserEmail onClick={onTitleClick}>{email}</UserEmail>
       <EditIconContainer size={15} color="#ec8d3d">
         <PencilIcon />
       </EditIconContainer>

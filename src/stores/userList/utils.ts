@@ -1,11 +1,7 @@
-import {
-  RawUserInfo,
-  RawUserStudyGroup,
-  UserInfo,
-  UserStudyGroup
-} from './types';
+import { StudentInfo, StudentStudyGroup } from 'api/types';
+import { UserInfo, UserStudyGroup } from './types';
 
-function adaptUserStudyGroup(rawData: RawUserStudyGroup): UserStudyGroup {
+function adaptUserStudyGroup(rawData: StudentStudyGroup): UserStudyGroup {
   return {
     id: rawData.id,
     title: rawData.title,
@@ -14,7 +10,7 @@ function adaptUserStudyGroup(rawData: RawUserStudyGroup): UserStudyGroup {
   }
 }
 
-export function adaptUserInfo(rawData: RawUserInfo): UserInfo {
+export function adaptUserInfo(rawData: StudentInfo): UserInfo {
   return {
     id: rawData.id,
     email: rawData.email,

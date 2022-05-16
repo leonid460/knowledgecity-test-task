@@ -5,7 +5,8 @@ export const Container = styled.div<{ $size: number, $color?: string }>`
   width: ${({ $size }) => `${$size}px`};
   height: ${({ $size }) => `${$size}px`};
   
-  & path {
+  & path,
+  & circle {
     fill: ${({ $color }) => $color || ''};
   }
 `;

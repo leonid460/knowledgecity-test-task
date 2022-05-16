@@ -5,4 +5,5 @@ export interface IconContainerProps {
   className?: string;
   size?: number;
   color?: string;
+  onClick?: () => void;
 }

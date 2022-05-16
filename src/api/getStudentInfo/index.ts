@@ -1,0 +1,1 @@
+export { getStudentInfo } from './getStudentInfo';

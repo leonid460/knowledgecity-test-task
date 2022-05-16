@@ -108,3 +108,31 @@ export const UserGroupSkeleton = styled(Skeleton)`
   width: 130px;
   height: 18.5px;
 `;
+
+export const UserInfoTable = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  & > * {
+    margin-bottom: 16px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+export const UserInfoTableRow = styled.div`
+  display: grid;
+  grid-template-columns: 25% auto;
+`;
+
+export const UserInfoTableRowName = styled.span`
+  grid-column: 1 / 2;
+  color: #656363;
+`;
+
+export const UserInfoTableRowValue = styled.span`
+  grid-column: 2 / 3;
+  white-space: pre-wrap;
+`;

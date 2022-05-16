@@ -1,7 +1,8 @@
 import { createEffect } from 'effector';
 import { httpRequest } from 'utils/httpRequest';
 import { $userList } from './store';
-import { FetchUserListArgs, RawUserInfo } from './types';
+import { FetchUserListArgs } from './types';
+import { StudentInfo as RawUserInfo } from 'api/types';
 import { adaptUserInfo } from './utils';
 
 export const fetchUserList = createEffect(async ({ page }: FetchUserListArgs) => {

@@ -3,4 +3,10 @@ export interface ListItemProps {
   firstName: string;
   lastName: string;
   groupTitle: string;
+  onTitleClick?: () => void;
+}
+
+export interface ViewUserInfoModalProps {
+  userId: string;
+  closeModal: () => void;
 }

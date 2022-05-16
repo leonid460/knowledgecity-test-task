@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from 'effector-react';
 import { PageSelector } from 'components/PageSelector';
 import { $userList } from 'stores/userList/store';
@@ -12,10 +12,12 @@ import {
   PageOuterContainer,
   Title,
 } from './styled';
+import { ViewUserInfoModal } from './ViewUserInfoModal';
 
 export const HomePage = () => {
   const { users, currentPage, lastPage } = useStore($userList);
   const isPending = useStore(fetchUserList.pending);
+  const [selectedUserId, setSelectedUserId] = useState<string>('');
 
   const goToPage = (page: number) => {
     if (page !== currentPage) {
@@ -28,31 +30,41 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <PageOuterContainer>
-      <PageContainer>
-        <Title>User List</Title>
+    <>
+      <PageOuterContainer>
+        <PageContainer>
+          <Title>User List</Title>
 
-        {!isPending && <ListContainer>
-          {users.map((user) => (
-            <ListItem
-              key={user.id}
-              email={user.email}
-              firstName={user.firstName}
-              lastName={user.lastName}
-              groupTitle={user.studyGroup.title}
-            />
-          ))}
-        </ListContainer>}
+          {!isPending && <ListContainer>
+            {users.map((user) => (
+              <ListItem
+                key={user.id}
+                email={user.email}
+                firstName={user.firstName}
+                lastName={user.lastName}
+                groupTitle={user.studyGroup.title}
+                onTitleClick={() => setSelectedUserId(user.id)}
+              />
+            ))}
+          </ListContainer>}
 
-        {isPending && <ListSkeleton/>}
+          {isPending && <ListSkeleton/>}
 
-        <PageSelector
-          currentPage={currentPage}
-          lastPage={lastPage}
-          goToPage={goToPage}
+          <PageSelector
+            currentPage={currentPage}
+            lastPage={lastPage}
+            goToPage={goToPage}
+          />
+        </PageContainer>
+        <PageFooter />
+      </PageOuterContainer>
+
+      {!!selectedUserId && (
+        <ViewUserInfoModal
+          userId={selectedUserId}
+          closeModal={() => setSelectedUserId('')}
         />
-      </PageContainer>
-      <PageFooter />
-    </PageOuterContainer>
+      )}
+    </>
   );
 };
