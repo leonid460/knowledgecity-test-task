@@ -19,6 +19,9 @@ export const PageContainer = styled.div`
 `;
 
 export const PageFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 44px;
   background: #ebebeb;
 `;
@@ -152,5 +155,34 @@ export const EditUserInfoInput = styled(Input)<{ error?: boolean }>`
   
   &:focus {
     border-color: #ec8d3d;
+  }
+`;
+
+export const UserControlPanelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  white-space: pre;
+`;
+
+export const UserControlPanelEmail = styled.span`
+  font-size: 16px;
+  line-height: 18px;
+`;
+
+export const LogoutIconContainer = styled(IconContainer)`
+  margin-right: 4px;
+`;
+
+export const LogoutButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 18px;
+  
+  &:hover {
+    background: rgba(236, 141, 61, 0.25);
   }
 `;

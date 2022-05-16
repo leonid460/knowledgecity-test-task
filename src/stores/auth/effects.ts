@@ -30,7 +30,7 @@ export const renewSession = createEffect(async () => {
     type: 'GET',
   });
 
-  const email: string = data.email || '';
+  const email: string = data.user.email || '';
 
   return { email };
 });

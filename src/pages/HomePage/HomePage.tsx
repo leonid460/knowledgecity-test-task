@@ -13,6 +13,7 @@ import {
   PageOuterContainer,
   Title,
 } from './styled';
+import { UserControlPanel } from './UserControlPanel';
 import { ViewUserInfoModal } from './ViewUserInfoModal';
 
 export const HomePage = () => {
@@ -59,7 +60,9 @@ export const HomePage = () => {
             goToPage={goToPage}
           />
         </PageContainer>
-        <PageFooter />
+        <PageFooter>
+          <UserControlPanel />
+        </PageFooter>
       </PageOuterContainer>
 
       {!!selectedToViewUserId && (

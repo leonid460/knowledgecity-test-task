@@ -16,3 +16,7 @@ export interface EditUserInfoModalProps {
   userId: string;
   closeModal: () => void;
 }
+
+export interface LogoutButtonProps {
+  onClick: () => void;
+}
