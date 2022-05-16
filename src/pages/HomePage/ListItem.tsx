@@ -16,7 +16,8 @@ export const ListItem: FC<ListItemProps> = ({
   groupTitle,
   lastName,
   firstName,
-  onTitleClick
+  onTitleClick,
+  onEditButtonClick
 }) => {
   return (
     <ListItemContainer>
@@ -24,7 +25,7 @@ export const ListItem: FC<ListItemProps> = ({
         <CheckmarkIcon />
       </CheckMarkContainer>
       <UserEmail onClick={onTitleClick}>{email}</UserEmail>
-      <EditIconContainer size={15} color="#ec8d3d">
+      <EditIconContainer size={15} color="#ec8d3d" onClick={onEditButtonClick}>
         <PencilIcon />
       </EditIconContainer>
       <UserName>{firstName} {lastName}</UserName>

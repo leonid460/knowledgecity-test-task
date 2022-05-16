@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IconContainer } from 'components/IconContainer';
+import { Input } from 'components/Input';
 import { Skeleton } from 'components/Skeleton';
 
 export const PageOuterContainer = styled.div`
@@ -140,4 +141,16 @@ export const UserInfoTableRowName = styled.span`
 export const UserInfoTableRowValue = styled.span`
   grid-column: 2 / 3;
   white-space: pre-wrap;
+`;
+
+export const EditUserInfoInput = styled(Input)<{ error?: boolean }>`
+  padding: 8px 10px;
+  outline: none;
+  border: 1px solid ${({ error }) => error ? 'red' : 'black'};
+  border-radius: 6px;
+  font-size: 14px;
+  
+  &:focus {
+    border-color: #ec8d3d;
+  }
 `;

@@ -42,16 +42,12 @@ export async function httpRequest(args: HttpRequestArgs) {
   });
   const contentType = response.headers.get("content-type") || '';
 
-  /*
-  * При попытке запроса без токена почему-то возвращается запрос со статусом 200, вместо 403
-  * и с html-ем в теле ответа
-  * */
-  if (response.status === 403 || !contentType.includes('application/json')) {
+  if (response.status === 403) {
     logout();
     throw new Error('access denied');
   }
 
-  if (!response.ok) {
+  if (!contentType.includes('application/json') || !response.ok) {
     throw new Error(`${response.status}`);
   }
 

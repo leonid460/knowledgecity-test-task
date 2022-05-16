@@ -8,6 +8,7 @@ export const Button = styled.button`
   background: #ec8d3d;
   font-size: 16px;
   font-weight: 600;
+  line-height: 18px;
   cursor: pointer;
   
   &:hover {
