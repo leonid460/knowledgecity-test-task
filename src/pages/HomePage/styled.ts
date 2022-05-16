@@ -64,6 +64,10 @@ export const UserEmail = styled.span`
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   cursor: pointer;
+  
+  &:hover {
+    color: #ec8d3d;
+  }
 `;
 
 export const EditIconContainer = styled(IconContainer)`
@@ -76,6 +80,7 @@ export const EditIconContainer = styled(IconContainer)`
 export const UserName = styled.span`
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+  color: #777676;
 `;
 
 export const UserGroupName = styled.span`
